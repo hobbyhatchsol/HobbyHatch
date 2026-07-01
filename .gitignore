@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.DS_Store
+*.log
+.env*.local
+next-env.d.ts
+
+# Local Claude runtime files (keep launch.json)
+.claude/settings.local.json
+.claude/*.lock
+tsconfig.tsbuildinfo

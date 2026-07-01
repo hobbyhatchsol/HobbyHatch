@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FBFAF8"/>
+      <stop offset="1" stop-color="#F1EEFB"/>
+    </linearGradient>
+    <linearGradient id="grad" x1="120" y1="470" x2="760" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C5CFC"/>
+      <stop offset="0.5" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#14C69A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#7C5CFC" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#7C5CFC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(96,96)">
+    <image href="/brand/logo.svg" width="96" height="96"/>
+    <text x="120" y="60" font-family="Inter, sans-serif" font-size="34" font-weight="700" fill="#100F0E">HobbyHatch</text>
+  </g>
+  <text x="96" y="320" font-family="Inter, sans-serif" font-size="78" font-weight="800" fill="#100F0E" letter-spacing="-2">Tokenize Your Hobby.</text>
+  <text x="96" y="410" font-family="Inter, sans-serif" font-size="78" font-weight="800" letter-spacing="-2" fill="url(#grad)">Build Your Community.</text>
+  <text x="96" y="486" font-family="Inter, sans-serif" font-size="30" fill="#6B655E">A Solana-native protocol for tokenized hobby communities.</text>
+  <g transform="translate(96,536)" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#37332F">
+    <rect x="0" y="0" width="196" height="50" rx="25" fill="#fff" stroke="#E7E2DA"/>
+    <circle cx="28" cy="25" r="5" fill="#7C5CFC"/>
+    <text x="46" y="33">Built on Solana</text>
+    <rect x="216" y="0" width="238" height="50" rx="25" fill="#fff" stroke="#E7E2DA"/>
+    <circle cx="244" cy="25" r="5" fill="#14C69A"/>
+    <text x="262" y="33">Launching on Orynth</text>
+  </g>
+</svg>
