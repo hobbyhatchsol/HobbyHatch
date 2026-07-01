@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { XIcon, GithubIcon, DiscordIcon } from "@/components/ui/icons";
+import { XIcon } from "@/components/ui/icons";
 import { Logo } from "@/components/brand/Logo";
 
 const columns = [
@@ -35,16 +35,15 @@ export function Footer() {
               build it. The $HOBBY token launches on Orynth.
             </p>
             <div className="mt-6 flex items-center gap-2">
-              {[XIcon, GithubIcon, DiscordIcon].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="social link"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-ink/20 hover:text-ink"
-                >
-                  <Icon className="h-[18px] w-[18px]" />
-                </a>
-              ))}
+              <a
+                href="https://x.com/hobbyhatch"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="HobbyHatch on X"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-ink/20 hover:text-ink"
+              >
+                <XIcon className="h-[18px] w-[18px]" />
+              </a>
             </div>
           </div>
 
