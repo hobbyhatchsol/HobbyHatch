@@ -21,9 +21,14 @@ const description =
   "A Solana-native protocol for creating tokenized hobby communities. Launch community-owned ecosystems, mint tokens and reward contributors on Solana. The $HOBBY protocol token launches on Orynth.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hobbyhatch.xyz"),
+  metadataBase: new URL("https://www.hobbyhatch.fun"),
   title,
   description,
+  verification: {
+    other: {
+      "ory-verify": "orynth-fb47cd862f714f288de88bb7da1a628d",
+    },
+  },
   keywords: [
     "HobbyHatch",
     "Solana",
