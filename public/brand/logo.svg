@@ -1,86 +1,107 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="HobbyHatch">
   <defs>
-    <linearGradient id="holo" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#7FE7D9"/>
-      <stop offset="0.35" stop-color="#8FD3F4"/>
-      <stop offset="0.7" stop-color="#B7A6F3"/>
-      <stop offset="1" stop-color="#FCE38A"/>
+    <radialGradient id="coin" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#FBFAFF"/>
+      <stop offset="0.55" stop-color="#F1EEFC"/>
+      <stop offset="1" stop-color="#E7E9FB"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CFC6F5"/>
+      <stop offset="0.5" stop-color="#BFE0F3"/>
+      <stop offset="1" stop-color="#C7EFDD"/>
     </linearGradient>
-    <linearGradient id="egg" x1="180" y1="150" x2="330" y2="410" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FBFBF4"/>
-      <stop offset="0.55" stop-color="#F3F7EC"/>
-      <stop offset="1" stop-color="#D9EFDD"/>
+    <linearGradient id="egg" x1="200" y1="150" x2="320" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFEFA"/>
+      <stop offset="0.6" stop-color="#FBF6EC"/>
+      <stop offset="1" stop-color="#F3ECDD"/>
     </linearGradient>
-    <radialGradient id="eggGlow" cx="0.42" cy="0.36" r="0.7">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+    <linearGradient id="holo" x1="182" y1="330" x2="330" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8FE3F4"/>
+      <stop offset="0.4" stop-color="#C9B8F5"/>
+      <stop offset="0.7" stop-color="#FBC7DE"/>
+      <stop offset="1" stop-color="#CFF3D8"/>
+    </linearGradient>
+    <linearGradient id="ped" x1="150" y1="378" x2="360" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E6E0FA"/>
+      <stop offset="0.5" stop-color="#DCEFF4"/>
+      <stop offset="1" stop-color="#DDF3E6"/>
+    </linearGradient>
+    <radialGradient id="eggGlow" cx="0.4" cy="0.32" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <clipPath id="hexClip">
-      <path d="M466 256 361 438 151 438 46 256 151 74 361 74Z"/>
-    </clipPath>
+    <path id="spk" d="M0,-11 C0,-3.3 3.3,0 11,0 C3.3,0 0,3.3 0,11 C0,3.3 -3.3,0 -11,0 C-3.3,0 0,-3.3 0,-11Z"/>
   </defs>
 
-  <!-- Badge background -->
-  <g clip-path="url(#hexClip)">
-    <path d="M466 256 361 438 151 438 46 256 151 74 361 74Z" fill="#12141C"/>
-    <path d="M466 256 361 438 151 438 46 256 151 74 361 74Z" fill="url(#holo)" opacity="0.06"/>
-    <!-- circuit traces -->
-    <g stroke="url(#holo)" stroke-width="3" fill="none" opacity="0.85" stroke-linecap="round">
-      <path d="M70 300 L120 300 L150 330 L210 330"/>
-      <path d="M96 350 L150 350 L172 372 L250 372"/>
-      <path d="M442 300 L392 300 L362 330 L302 330"/>
-      <path d="M416 350 L362 350 L340 372 L262 372"/>
-      <path d="M256 400 L256 372"/>
-    </g>
-    <g fill="url(#holo)">
-      <circle cx="210" cy="330" r="5"/>
-      <circle cx="302" cy="330" r="5"/>
-      <circle cx="250" cy="372" r="4"/>
-      <circle cx="262" cy="372" r="4"/>
-      <circle cx="256" cy="400" r="5"/>
-      <circle cx="70" cy="300" r="4"/>
-      <circle cx="442" cy="300" r="4"/>
-    </g>
-  </g>
+  <!-- Coin -->
+  <circle cx="256" cy="256" r="248" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="248" fill="none" stroke="url(#rim)" stroke-width="6" opacity="0.9"/>
+  <circle cx="256" cy="256" r="228" fill="url(#coin)"/>
+  <circle cx="256" cy="256" r="228" fill="none" stroke="#D7D2F2" stroke-width="2" opacity="0.7"/>
 
-  <!-- Hexagon holographic frame -->
-  <path d="M466 256 361 438 151 438 46 256 151 74 361 74Z" fill="none" stroke="url(#holo)" stroke-width="10" stroke-linejoin="round"/>
-  <path d="M466 256 361 438 151 438 46 256 151 74 361 74Z" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Hexagon -->
+  <path d="M256 96 L372 163 L372 297 L256 364 L140 297 L140 163 Z"
+        fill="#EAE6FB" fill-opacity="0.45" stroke="url(#rim)" stroke-width="5" stroke-linejoin="round" opacity="0.85"/>
 
   <!-- Sparkles -->
-  <g fill="#FCE38A">
-    <path d="M168 150 q6 14 20 20 q-14 6 -20 20 q-6 -14 -20 -20 q14 -6 20 -20Z"/>
-    <path d="M338 196 q4 9 13 13 q-9 4 -13 13 q-4 -9 -13 -13 q9 -4 13 -13Z" opacity="0.9"/>
+  <g fill="#EBD9F6">
+    <use href="#spk" transform="translate(150,150) scale(0.8)"/>
+    <use href="#spk" transform="translate(360,138) scale(0.6)"/>
+    <use href="#spk" transform="translate(372,300) scale(0.7)"/>
+    <use href="#spk" transform="translate(150,300) scale(0.55)"/>
+    <use href="#spk" transform="translate(320,110) scale(0.4)"/>
+  </g>
+  <!-- Holographic gems -->
+  <g opacity="0.9">
+    <rect x="118" y="238" width="20" height="20" rx="4" transform="rotate(45 128 248)" fill="#CBE9F4"/>
+    <rect x="374" y="238" width="20" height="20" rx="4" transform="rotate(45 384 248)" fill="#F3D4E6"/>
+    <circle cx="150" cy="360" r="9" fill="#F6E1B8"/>
+    <circle cx="366" cy="362" r="8" fill="#CFE9DC"/>
+  </g>
+
+  <!-- Pedestal -->
+  <g>
+    <ellipse cx="256" cy="426" rx="112" ry="26" fill="url(#ped)"/>
+    <ellipse cx="256" cy="426" rx="112" ry="26" fill="none" stroke="#CFC8EC" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="256" cy="406" rx="92" ry="22" fill="#F1EFFB"/>
+    <ellipse cx="256" cy="388" rx="74" ry="18" fill="url(#ped)"/>
   </g>
 
   <!-- Egg -->
   <g>
-    <!-- lower shell -->
-    <path d="M198 268 C198 224 224 196 256 196 C288 196 314 224 314 268 C314 322 289 356 256 356 C223 356 198 322 198 268Z" fill="url(#egg)" stroke="#C9DFCC" stroke-width="2"/>
+    <path d="M256 138 C304 138 334 196 334 258 C334 326 302 372 256 372 C210 372 178 326 178 258 C178 196 208 138 256 138Z"
+          fill="url(#egg)" stroke="#E3DAC8" stroke-width="2"/>
+    <!-- holographic bottom band -->
+    <path d="M186 300 C200 348 226 372 256 372 C286 372 312 348 326 300 C300 322 212 322 186 300Z" fill="url(#holo)" opacity="0.85"/>
     <!-- crack line -->
-    <path d="M198 262 L214 250 L226 262 L240 248 L254 262 L268 248 L282 262 L296 250 L314 262"
-          fill="none" stroke="#12141C" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-    <!-- cracked cap -->
-    <path d="M206 250 C206 218 228 198 256 198 C284 198 306 218 306 250 L296 250 L282 262 L268 248 L254 262 L240 248 L226 262 L214 250Z"
-          fill="url(#egg)" stroke="#C9DFCC" stroke-width="2"/>
-    <ellipse cx="230" cy="240" rx="46" ry="34" fill="url(#eggGlow)"/>
+    <path d="M182 300 L206 284 L224 300 L244 282 L262 300 L282 282 L300 300 L322 286 L330 298"
+          fill="none" stroke="#D8A97A" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>
+    <!-- shell tips -->
+    <path d="M196 288 L188 262 L210 282Z" fill="url(#egg)" stroke="#E3DAC8" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M316 288 L326 262 L302 282Z" fill="url(#egg)" stroke="#E3DAC8" stroke-width="2" stroke-linejoin="round"/>
+    <!-- light -->
+    <ellipse cx="228" cy="212" rx="52" ry="40" fill="url(#eggGlow)"/>
 
     <!-- face -->
-    <g fill="#12141C">
-      <ellipse cx="238" cy="292" rx="8.5" ry="11"/>
-      <ellipse cx="278" cy="292" rx="8.5" ry="11"/>
-      <path d="M244 312 C250 328 268 328 274 312 C270 322 248 322 244 312Z"/>
+    <g>
+      <ellipse cx="232" cy="240" rx="15" ry="19" fill="#20223A"/>
+      <ellipse cx="282" cy="240" rx="15" ry="19" fill="#20223A"/>
+      <circle cx="237" cy="233" r="4.5" fill="#fff"/>
+      <circle cx="287" cy="233" r="4.5" fill="#fff"/>
+      <circle cx="228" cy="246" r="2.4" fill="#fff" opacity="0.85"/>
+      <circle cx="278" cy="246" r="2.4" fill="#fff" opacity="0.85"/>
+      <!-- open smile -->
+      <path d="M243 262 Q257 284 271 262 Q267 276 257 276 Q247 276 243 262Z" fill="#20223A"/>
+      <path d="M250 271 Q257 279 264 271 Q257 275 250 271Z" fill="#F58BA6"/>
+      <!-- blush -->
+      <ellipse cx="210" cy="258" rx="11" ry="7" fill="#FBB9CB" opacity="0.8"/>
+      <ellipse cx="304" cy="258" rx="11" ry="7" fill="#FBB9CB" opacity="0.8"/>
     </g>
-    <circle cx="241" cy="288" r="2.6" fill="#fff"/>
-    <circle cx="281" cy="288" r="2.6" fill="#fff"/>
-    <!-- cheeks -->
-    <circle cx="224" cy="306" r="6" fill="#FBC4B5" opacity="0.7"/>
-    <circle cx="292" cy="306" r="6" fill="#FBC4B5" opacity="0.7"/>
     <!-- speckles -->
-    <g fill="#CBB89B" opacity="0.55">
-      <circle cx="300" cy="300" r="3"/>
-      <circle cx="292" cy="330" r="2.4"/>
-      <circle cx="214" cy="322" r="2.2"/>
+    <g fill="#E9D9B8" opacity="0.7">
+      <circle cx="300" cy="210" r="3.5"/>
+      <circle cx="214" cy="188" r="2.6"/>
+      <circle cx="300" cy="182" r="2.2"/>
     </g>
   </g>
 </svg>

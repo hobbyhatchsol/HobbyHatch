@@ -1,20 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="h" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#7FE7D9"/>
-      <stop offset="0.6" stop-color="#8FD3F4"/>
-      <stop offset="1" stop-color="#FCE38A"/>
+    <radialGradient id="c" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#FBFAFF"/>
+      <stop offset="1" stop-color="#E7E9FB"/>
+    </radialGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CFC6F5"/>
+      <stop offset="0.5" stop-color="#BFE0F3"/>
+      <stop offset="1" stop-color="#C7EFDD"/>
     </linearGradient>
-    <linearGradient id="e" x1="20" y1="18" x2="42" y2="52" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FBFBF4"/>
-      <stop offset="1" stop-color="#D9EFDD"/>
+    <linearGradient id="h" x1="20" y1="42" x2="44" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8FE3F4"/>
+      <stop offset="0.5" stop-color="#C9B8F5"/>
+      <stop offset="1" stop-color="#CFF3D8"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="15" fill="#12141C"/>
-  <rect x="2.5" y="2.5" width="59" height="59" rx="13" fill="none" stroke="url(#h)" stroke-width="2.5"/>
-  <path d="M22 34 C22 25 26 20 32 20 C38 20 42 25 42 34 C42 44 37 49 32 49 C27 49 22 44 22 34Z" fill="url(#e)"/>
-  <path d="M22 31 L26 27 L30 31 L34 26 L38 31 L42 28" fill="none" stroke="#12141C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <ellipse cx="29" cy="37" rx="2.4" ry="3" fill="#12141C"/>
-  <ellipse cx="37" cy="37" rx="2.4" ry="3" fill="#12141C"/>
-  <path d="M30.5 42 C32 45 34 45 35.5 42" fill="none" stroke="#12141C" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="31" fill="#fff" stroke="url(#r)" stroke-width="2"/>
+  <circle cx="32" cy="32" r="27" fill="url(#c)"/>
+  <path d="M32 13 C40 13 45 23 45 33 C45 44 39 50 32 50 C25 50 19 44 19 33 C19 23 24 13 32 13Z" fill="#FFFEFA" stroke="#E3DAC8" stroke-width="1.2"/>
+  <path d="M20 40 C23 46 27 50 32 50 C37 50 41 46 44 40 C39 44 25 44 20 40Z" fill="url(#h)"/>
+  <path d="M20 40 L25 36 L29 40 L34 35 L38 40 L43 37" fill="none" stroke="#D8A97A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="28" cy="30" rx="3.4" ry="4.4" fill="#20223A"/>
+  <ellipse cx="38" cy="30" rx="3.4" ry="4.4" fill="#20223A"/>
+  <circle cx="29.2" cy="28.2" r="1.1" fill="#fff"/>
+  <circle cx="39.2" cy="28.2" r="1.1" fill="#fff"/>
+  <path d="M30 34 Q33 39 36 34 Q34 37 33 37 Q31 37 30 34Z" fill="#20223A"/>
+  <ellipse cx="24" cy="34" rx="2.6" ry="1.7" fill="#FBB9CB" opacity="0.85"/>
+  <ellipse cx="42" cy="34" rx="2.6" ry="1.7" fill="#FBB9CB" opacity="0.85"/>
 </svg>

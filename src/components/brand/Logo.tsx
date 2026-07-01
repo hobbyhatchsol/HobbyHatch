@@ -3,23 +3,26 @@
 import { useState } from "react";
 import { cn } from "@/lib/cn";
 
-// Uses the SVG badge by default. To use an official raster export instead,
-// set NEXT_PUBLIC_LOGO_SRC (e.g. "/logo.png") — it overrides with graceful fallback.
-const PRIMARY = process.env.NEXT_PUBLIC_LOGO_SRC || "/brand/logo.svg";
+// Drop the official raster export at /public/logo.png and it's used everywhere
+// automatically (falls back to the SVG mark if absent). You can also point at a
+// custom path via NEXT_PUBLIC_LOGO_SRC. Never distorted or recolored.
+const PRIMARY = process.env.NEXT_PUBLIC_LOGO_SRC || "/logo.png";
 const FALLBACK = "/brand/logo.svg";
 
 /**
- * Brand mark. Renders the official raster logo when present at /public/logo.png,
- * otherwise a faithful SVG badge. Never distorted or recolored — square aspect.
+ * Brand mark — the HobbyHatch hatching-egg coin. Circular, with a subtle ring
+ * so it stays clearly visible on white surfaces.
  */
 export function Logo({
   size = 32,
   className,
   priority = false,
+  ring = true,
 }: {
   size?: number;
   className?: string;
   priority?: boolean;
+  ring?: boolean;
 }) {
   const [src, setSrc] = useState(PRIMARY);
   return (
@@ -32,7 +35,11 @@ export function Logo({
       alt="HobbyHatch"
       loading={priority ? "eager" : "lazy"}
       decoding="async"
-      className={cn("select-none rounded-[22%]", className)}
+      className={cn(
+        "select-none rounded-full",
+        ring && "ring-1 ring-ink/5 shadow-[0_1px_4px_rgba(16,15,14,0.08)]",
+        className
+      )}
       style={{ width: size, height: size }}
       draggable={false}
     />
@@ -40,7 +47,7 @@ export function Logo({
 }
 
 export function Wordmark({
-  size = 32,
+  size = 36,
   className,
   textClassName,
   priority = false,
@@ -55,7 +62,7 @@ export function Wordmark({
       <Logo size={size} priority={priority} />
       <span
         className={cn(
-          "text-[17px] font-semibold tracking-tight text-ink",
+          "text-[18px] font-semibold tracking-tight text-ink",
           textClassName
         )}
       >

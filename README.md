@@ -70,9 +70,10 @@ The official HobbyHatch mark ships as a faithful **SVG recreation** at
 used across navbar, footer, loading screen, auth screens, dashboard and metadata via the reusable
 [`<Logo>`](src/components/brand/Logo.tsx) / `<Wordmark>` components.
 
-To swap in an exact raster export of the attached PNG, drop it in `public/` and set
-`NEXT_PUBLIC_LOGO_SRC=/your-logo.png` — the `<Logo>` component picks it up automatically
-(with graceful fallback to the SVG). It is never distorted or recolored (square aspect, preserved).
+To use the exact raster logo, drop it at **`public/logo.png`** — the `<Logo>` component uses it
+automatically everywhere (navbar, footer, loading, auth, lock screen, dashboard), with graceful
+fallback to the SVG mark if it's absent. Point at a different path via `NEXT_PUBLIC_LOGO_SRC`.
+It is never distorted or recolored (rendered as a circular coin with a subtle ring).
 
 ## Notes
 
