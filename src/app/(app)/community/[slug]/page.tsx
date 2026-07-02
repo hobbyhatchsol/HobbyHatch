@@ -30,6 +30,7 @@ import { useCommunity } from "@/hooks/useCommunities";
 import { useUiStore } from "@/store/useUiStore";
 import { useHobbyStore } from "@/store/useHobbyStore";
 import { formatUsd, formatNumber, shortAddress } from "@/lib/format";
+import { explorerAddress } from "@/lib/solana/token";
 import type { Community } from "@/data/communities";
 import { cn } from "@/lib/cn";
 import { fadeUp, ease } from "@/lib/motion";
@@ -348,6 +349,19 @@ function Overview({ community }: { community: Community }) {
           />
           <TokenRow label="Supply" value={formatNumber(token.supply)} />
           <TokenRow label="Holders" value={formatNumber(token.holders)} />
+          {token.mintAddress && (
+            <div className="flex items-center justify-between border-b border-line/70 pb-4 last:border-none last:pb-0">
+              <span className="text-[14px] text-ink-muted">Mint</span>
+              <a
+                href={explorerAddress(token.mintAddress)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[13px] font-medium text-brand hover:underline"
+              >
+                {shortAddress(token.mintAddress, 4)} ↗
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="mt-7">

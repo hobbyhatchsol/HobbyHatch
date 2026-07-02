@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import {
   ImageIcon,
@@ -26,6 +26,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { categories, type Category } from "@/data/communities";
 import { useHobbyStore } from "@/store/useHobbyStore";
 import { useRefreshCommunities } from "@/hooks/useCommunities";
+import { createCommunityMint, explorerAddress } from "@/lib/solana/token";
 import { shortAddress } from "@/lib/format";
 import { cn } from "@/lib/cn";
 import { fadeUp, ease } from "@/lib/motion";
@@ -113,9 +114,13 @@ export default function CreatePage() {
   const [launching, setLaunching] = useState(false);
   const [done, setDone] = useState(false);
   const [newSlug, setNewSlug] = useState("");
+  const [mintAddress, setMintAddress] = useState<string | null>(null);
+  const [statusMsg, setStatusMsg] = useState("");
+  const [error, setError] = useState("");
 
   const router = useRouter();
-  const { publicKey } = useWallet();
+  const { publicKey, sendTransaction } = useWallet();
+  const { connection } = useConnection();
   const createCommunity = useHobbyStore((s) => s.createCommunity);
   const refresh = useRefreshCommunities();
 
@@ -133,37 +138,67 @@ export default function CreatePage() {
     if (!handleTouched) setHandle(slugify(v));
   }
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!canSubmit || launching) return;
     setLaunching(true);
-    window.setTimeout(() => {
-      const community = createCommunity({
-        name,
-        slug: effectiveHandle,
-        tagline,
-        description,
-        category: category as Category,
-        logoFrom: preset.from,
-        logoTo: preset.to,
-        bannerFrom: preset.from,
-        bannerVia: preset.via,
-        bannerTo: preset.to,
-        glyph,
-        tokenOn,
-        tokenSymbol: symbol,
-        tokenSupply: supply ? Number(supply.replace(/[^0-9]/g, "")) : undefined,
-        x,
-        discord,
-        web: website,
-        visibility,
-        creator: publicKey ? shortAddress(publicKey.toBase58()) : "you",
-      });
-      setNewSlug(community.slug);
-      refresh();
-      setLaunching(false);
-      setDone(true);
-    }, 1200);
+    setError("");
+    setMintAddress(null);
+
+    const supplyNum = supply ? Number(supply.replace(/[^0-9]/g, "")) : 1_000_000;
+
+    // If a token is enabled and a wallet is connected, mint a real SPL token
+    // on-chain (devnet). If the user rejects or lacks SOL, we surface the error
+    // and stop — the creator can retry or disable the token.
+    let mint: string | undefined;
+    if (tokenOn && publicKey) {
+      try {
+        setStatusMsg("Minting your community token on Solana…");
+        const res = await createCommunityMint(connection, publicKey, sendTransaction, {
+          supply: supplyNum,
+        });
+        mint = res.mint;
+        setMintAddress(res.mint);
+      } catch (err) {
+        setLaunching(false);
+        setStatusMsg("");
+        setError(
+          err instanceof Error && /reject|declined|User rejected/i.test(err.message)
+            ? "Transaction cancelled. Approve it in your wallet to mint the token, or turn the token off to launch without one."
+            : "Couldn't mint the token — make sure your wallet has some devnet SOL for fees, then try again."
+        );
+        return;
+      }
+    }
+
+    setStatusMsg("Creating your community…");
+    const community = createCommunity({
+      name,
+      slug: effectiveHandle,
+      tagline,
+      description,
+      category: category as Category,
+      logoFrom: preset.from,
+      logoTo: preset.to,
+      bannerFrom: preset.from,
+      bannerVia: preset.via,
+      bannerTo: preset.to,
+      glyph,
+      tokenOn,
+      tokenSymbol: symbol,
+      tokenSupply: supplyNum,
+      mintAddress: mint,
+      x,
+      discord,
+      web: website,
+      visibility,
+      creator: publicKey ? shortAddress(publicKey.toBase58()) : "you",
+    });
+    setNewSlug(community.slug);
+    refresh();
+    setLaunching(false);
+    setStatusMsg("");
+    setDone(true);
   }
 
   const previewName = name.trim() || "Your community";
@@ -573,6 +608,18 @@ export default function CreatePage() {
               </Section>
 
               {/* Submit */}
+              {error && (
+                <p className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-[14px] text-rose-600">
+                  {error}
+                </p>
+              )}
+              {tokenOn && (
+                <p className="flex items-center gap-2 text-[13px] text-ink-muted">
+                  <Coins className="h-4 w-4 text-brand" />
+                  A real SPL token will be minted on Solana devnet — approve the
+                  transaction in your wallet (needs a little devnet SOL for fees).
+                </p>
+              )}
               <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <Button variant="ghost" onClick={() => undefined}>
                   Save draft
@@ -589,7 +636,7 @@ export default function CreatePage() {
                   {launching ? (
                     <>
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-paper/30 border-t-paper" />
-                      Launching…
+                      {statusMsg || "Launching…"}
                     </>
                   ) : (
                     <>
@@ -697,6 +744,22 @@ export default function CreatePage() {
               </p>
             </div>
           </div>
+          {mintAddress && (
+            <a
+              href={explorerAddress(mintAddress)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex items-center justify-between gap-2 rounded-xl border border-line bg-white/70 px-3 py-2.5 text-[13px] transition-colors hover:border-brand/30"
+            >
+              <span className="flex items-center gap-2 text-ink-muted">
+                <Coins className="h-4 w-4 text-brand" />
+                ${previewSymbol} minted on Solana
+              </span>
+              <span className="font-mono text-ink">
+                {shortAddress(mintAddress, 4)} ↗
+              </span>
+            </a>
+          )}
         </div>
         <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
           <Button variant="ghost" size="md" href="/dashboard">

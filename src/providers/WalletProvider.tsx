@@ -32,7 +32,13 @@ const WalletModalProvider = RawWalletModalProvider as unknown as FC<{
 // explicitly connects a wallet. Otherwise a returning visitor would be silently
 // reconnected on page load without ever choosing to sign in.
 export function WalletProvider({ children }: { children: ReactNode }) {
-  const endpoint = useMemo(() => clusterApiUrl("devnet"), []);
+  // Prefer a dedicated RPC (Helius/QuickNode) via env; fall back to public
+  // devnet. The public endpoint rate-limits hard, so set NEXT_PUBLIC_SOLANA_RPC
+  // in production.
+  const endpoint = useMemo(
+    () => process.env.NEXT_PUBLIC_SOLANA_RPC || clusterApiUrl("devnet"),
+    []
+  );
 
   return (
     <ConnectionProvider endpoint={endpoint}>

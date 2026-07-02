@@ -73,10 +73,10 @@ export function Footer() {
             © {new Date().getFullYear()} HobbyHatch Protocol. Built on Solana · Live now · $HOBBY launches on Orynth.
           </p>
           <div className="flex items-center gap-6 text-[13px] text-ink-faint">
-            <a href="#" className="transition-colors hover:text-ink-muted">
+            <a href="/privacy" className="transition-colors hover:text-ink-muted">
               Privacy
             </a>
-            <a href="#" className="transition-colors hover:text-ink-muted">
+            <a href="/terms" className="transition-colors hover:text-ink-muted">
               Terms
             </a>
             <span className="flex items-center gap-2">

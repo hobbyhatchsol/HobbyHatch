@@ -24,6 +24,7 @@ export type CreateCommunityInput = {
   tokenOn: boolean;
   tokenSymbol?: string;
   tokenSupply?: number;
+  mintAddress?: string;
   x?: string;
   discord?: string;
   web?: string;
@@ -115,6 +116,7 @@ export const useHobbyStore = create<HobbyState>()(
             marketCapUsd: input.tokenOn ? supply * price : 0,
             holders: 1,
             supply,
+            mintAddress: input.mintAddress,
           },
           members: 1,
           treasuryUsd: 0,

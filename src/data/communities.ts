@@ -26,6 +26,7 @@ export type Community = {
     marketCapUsd: number;
     holders: number;
     supply: number;
+    mintAddress?: string;
   };
   members: number;
   treasuryUsd: number;
