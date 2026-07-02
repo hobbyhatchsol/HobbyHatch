@@ -1,4 +1,8 @@
-// Platform launch — two weeks from the build date (2026-07-01).
+// Master switch — the platform is LIVE. Flip to false to re-arm the
+// pre-launch lock + countdown against LAUNCH_DATE below.
+export const LAUNCHED = true;
+
+// Platform launch reference date (kept for the roadmap / historical copy).
 export const LAUNCH_DATE = new Date("2026-07-15T16:00:00Z");
 export const LAUNCH_LABEL = "July 15, 2026";
 export const LAUNCH_TIME_LABEL = "16:00 UTC";

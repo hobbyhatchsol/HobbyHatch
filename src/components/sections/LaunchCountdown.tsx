@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import {
+  LAUNCHED,
   getTimeLeft,
   LAUNCH_LABEL,
   LAUNCH_TIME_LABEL,
@@ -58,7 +59,7 @@ export function LaunchCountdown() {
     return () => clearInterval(id);
   }, []);
 
-  const launched = time?.done ?? false;
+  const launched = LAUNCHED || (time?.done ?? false);
 
   return (
     <section id="launch" className="relative py-24 sm:py-28 lg:py-32">

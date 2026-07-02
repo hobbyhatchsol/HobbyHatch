@@ -48,7 +48,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button href="/app" size="md" className="hidden sm:inline-flex">
-            Get early access
+            Launch App
           </Button>
           <button
             type="button"
@@ -93,7 +93,7 @@ export function Navbar() {
           ))}
           <div className="p-2">
             <Button href="/app" size="md" className="w-full" onClick={() => setOpen(false)}>
-              Get early access
+              Launch App
             </Button>
           </div>
         </motion.div>

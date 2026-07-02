@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Check, Lock } from "lucide-react";
 import { Wordmark, Logo } from "@/components/brand/Logo";
 import {
+  LAUNCHED,
   getTimeLeft,
   LAUNCH_LABEL,
   LAUNCH_TIME_LABEL,
@@ -35,6 +36,7 @@ export function LaunchLock({ children }: { children: React.ReactNode }) {
   const [time, setTime] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
+    if (LAUNCHED) return;
     setMounted(true);
     const tick = () => {
       const t = getTimeLeft();
@@ -46,8 +48,9 @@ export function LaunchLock({ children }: { children: React.ReactNode }) {
     return () => clearInterval(id);
   }, []);
 
-  // Before launch (and during SSR / first paint) the platform stays locked.
-  if (mounted && launched) return <>{children}</>;
+  // Platform is live — serve the real app (SSR + client). When LAUNCHED is
+  // false, fall back to the date-based lock.
+  if (LAUNCHED || (mounted && launched)) return <>{children}</>;
 
   return <LockScreen time={time} />;
 }

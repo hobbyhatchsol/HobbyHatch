@@ -70,7 +70,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
           <p className="text-[13px] text-ink-faint">
-            © {new Date().getFullYear()} HobbyHatch Protocol. Built on Solana · $HOBBY launches on Orynth · Platform live July 15, 2026.
+            © {new Date().getFullYear()} HobbyHatch Protocol. Built on Solana · Live now · $HOBBY launches on Orynth.
           </p>
           <div className="flex items-center gap-6 text-[13px] text-ink-faint">
             <a href="#" className="transition-colors hover:text-ink-muted">

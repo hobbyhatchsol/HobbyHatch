@@ -45,7 +45,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand/60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
             </span>
-            Launching in 2 weeks · July 15, 2026
+            Now live on Solana
           </motion.div>
 
           <h1 className="mt-8 max-w-[16ch] text-[clamp(2.7rem,7vw,5.6rem)] font-semibold leading-[0.98] tracking-tightest text-ink">
@@ -101,11 +101,11 @@ export function Hero() {
             transition={{ delay: 0.75, duration: 0.8, ease }}
             className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
           >
-            <Button href="/app" arrow>
-              Get early access
+            <Button href="/create" arrow>
+              Launch your community
             </Button>
-            <Button href="#features" variant="secondary">
-              Read Documentation
+            <Button href="/discover" variant="secondary">
+              Explore communities
             </Button>
           </motion.div>
 

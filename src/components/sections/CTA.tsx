@@ -45,16 +45,15 @@ export function CTA() {
               <br className="hidden sm:block" /> hobby always deserved.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-muted">
-              The platform is ready and goes live in two weeks — July 15, 2026.
-              Get early access, help us build in public, and be first when the
-              hobby economy opens on Solana.
+              HobbyHatch is live on Solana. Spin up a tokenized community, fund a
+              shared treasury and reward the people who show up — in minutes.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href="/app" arrow>
-                Get early access
+              <Button href="/create" arrow>
+                Launch your community
               </Button>
-              <Button href="#launch" variant="secondary">
-                See the countdown
+              <Button href="/discover" variant="secondary">
+                Explore communities
               </Button>
             </div>
           </div>
